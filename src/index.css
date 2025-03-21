@@ -1,1 +1,14 @@
 @import "tailwindcss";
+
+@theme {
+  --font-body: Inter, sans-serif;
+
+  --color-mainBG: #f6f7f8;
+  --color-wapper: #ffffff;
+
+  --color-light-blue: #dbe9fe;
+  --color-light-pink: #fde0e6;
+  --color-light-yellow: #fff5d1;
+  --color-light-green: #d4f9d4;
+  --color-light-violet: #e0e0ff;
+}
