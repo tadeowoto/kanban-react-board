@@ -25,14 +25,29 @@ export const TodoWrapper = ({ title }: Props) => {
       <div className="w-full flex flex-col gap-3  ">
         {title === "To Do"
           ? todoNotes.map((note) => (
-              <TodoPost key={note.id} task={note.task} desc={note.desc} />
+              <TodoPost
+                key={note.id}
+                task={note.task}
+                desc={note.desc}
+                color={note.color}
+              />
             ))
           : title === "In Progress"
           ? inProgressNotes.map((note) => (
-              <TodoPost key={note.id} task={note.task} desc={note.desc} />
+              <TodoPost
+                key={note.id}
+                task={note.task}
+                desc={note.desc}
+                color={note.color}
+              />
             ))
           : doneNotes.map((note) => (
-              <TodoPost key={note.id} task={note.task} desc={note.desc} />
+              <TodoPost
+                key={note.id}
+                task={note.task}
+                desc={note.desc}
+                color={note.color}
+              />
             ))}
       </div>
     </article>

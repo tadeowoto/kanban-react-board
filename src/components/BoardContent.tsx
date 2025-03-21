@@ -26,10 +26,25 @@ export const BoardContent = () => {
   const handleForm = (e: React.FormEvent) => {
     e.preventDefault();
     setIsFormOpen(false);
+    const colorNumber = Math.floor(Math.random() * 9);
+    const colors = [
+      "bg-pastel-pink",
+      "bg-pastel-blue",
+      "bg-pastel-green",
+      "bg-pastel-yellow",
+      "bg-pastel-purple",
+      "bg-pastel-peach",
+      "bg-pastel-mint",
+      "bg-pastel-lavender",
+      "bg-pastel-coral",
+      "bg-pastel-turquoise",
+    ];
+
     const newNote = {
       id: Date.now().toString(),
       task: noteText,
       state: "todo" as const, // es para decirle a ts que es el valor exacto literal "todo"
+      color: colors[colorNumber],
     };
     setNotes((prevNotes) => [...prevNotes, newNote]);
     setNoteText("");

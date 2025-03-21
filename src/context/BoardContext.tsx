@@ -7,6 +7,7 @@ interface Note {
   task: string;
   desc?: string;
   state: State;
+  color: string;
 }
 
 type Notes = Note[];
@@ -35,18 +36,21 @@ export const BoardProvider = ({ children }: BoardProviderProps) => {
       task: "Example",
       desc: "Description 1",
       state: "todo",
+      color: "bg-pastel-pink",
     },
     {
       id: "2",
       task: "Example",
       desc: "Description 2",
       state: "inProgress",
+      color: "bg-pastel-blue",
     },
     {
       id: "3",
       task: "Example",
       desc: "Description 3",
       state: "done",
+      color: "bg-pastel-green",
     },
   ]);
 
