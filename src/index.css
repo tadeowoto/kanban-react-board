@@ -6,9 +6,14 @@
   --color-mainBG: #f6f7f8;
   --color-wapper: #ffffff;
 
-  --color-light-blue: #dbe9fe;
-  --color-light-pink: #fde0e6;
-  --color-light-yellow: #fff5d1;
-  --color-light-green: #d4f9d4;
-  --color-light-violet: #e0e0ff;
+  --color-pastel-pink: #ffe4e1;
+  --color-pastel-blue: #e6e6fa;
+  --color-pastel-green: #e0ffe0;
+  --color-pastel-yellow: #fffacd;
+  --color-pastel-purple: #e6e6fa;
+  --color-pastel-peach: #ffdab9;
+  --color-pastel-mint: #d0f0c0;
+  --color-pastel-lavender: #e6e6fa;
+  --color-pastel-coral: #ffd7ce;
+  --color-pastel-turquoise: #afeeee;
 }
