@@ -18,6 +18,12 @@ interface BoardContextType {
   inProgressNotes: Notes;
   doneNotes: Notes;
   setNotes: React.Dispatch<React.SetStateAction<Notes>>;
+  todoCounter: number;
+  inProgressCounter: number;
+  doneCounter: number;
+  setTodoCounter: React.Dispatch<React.SetStateAction<number>>;
+  setInProgressCounter: React.Dispatch<React.SetStateAction<number>>;
+  setDoneCounter: React.Dispatch<React.SetStateAction<number>>;
 }
 
 //defino a proposito el undefined asi manejo el error en caso de no existor el context
@@ -58,11 +64,21 @@ export const BoardProvider = ({ children }: BoardProviderProps) => {
   const inProgressNotes = notes.filter((note) => note.state === "inProgress");
   const doneNotes = notes.filter((note) => note.state === "done");
 
+  const [todoCounter, setTodoCounter] = useState(0);
+  const [inProgressCounter, setInProgressCounter] = useState(0);
+  const [doneCounter, setDoneCounter] = useState(0);
+
   const contextValue: BoardContextType = {
     todoNotes,
     inProgressNotes,
     doneNotes,
     setNotes,
+    todoCounter,
+    inProgressCounter,
+    doneCounter,
+    setTodoCounter,
+    setInProgressCounter,
+    setDoneCounter,
   };
 
   return (

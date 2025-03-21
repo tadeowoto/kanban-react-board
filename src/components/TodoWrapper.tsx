@@ -12,14 +12,26 @@ export const TodoWrapper = ({ title }: Props) => {
     throw new Error("TodoWrapper debe usarse dentro de un BoardProvider");
   }
 
-  const { todoNotes, inProgressNotes, doneNotes } = context;
+  const {
+    todoNotes,
+    inProgressNotes,
+    doneNotes,
+    todoCounter,
+    inProgressCounter,
+    doneCounter,
+  } = context;
+  console.log(todoCounter);
 
   return (
     <article className="flex flex-col gap-3 bg-wapper w-full h-fit p-3 font-body font-semibold rounded-lg border border-gray-400">
       <div className=" w-9/10 flex justify-between">
         <h1 className="text-xl">{title}</h1>
         <span className="text-sm bg-gray-200 p-1 rounded-full text-gray-500">
-          10
+          {title === "To Do"
+            ? todoCounter
+            : title === "In Progress"
+            ? inProgressCounter
+            : doneCounter}
         </span>
       </div>
       <div className="w-full flex flex-col gap-3  ">
