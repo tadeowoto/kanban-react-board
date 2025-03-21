@@ -1,6 +1,6 @@
 import { TodoPost } from "./TodoPost";
 import { useContext } from "react";
-import { BoardContext } from "../context/boardContext";
+import { BoardContext } from "../context/BoardContext.tsx";
 type Props = {
   title: string;
 };

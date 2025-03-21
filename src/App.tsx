@@ -1,6 +1,6 @@
 import "./App.css";
 import { TodoWrapper } from "./components/TodoWrapper";
-import { BoardProvider } from "./context/boardContext";
+import { BoardProvider } from "./context/BoardContext";
 
 function App() {
   return (
