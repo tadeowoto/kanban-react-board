@@ -41,7 +41,7 @@ export const BoardContent = () => {
     ];
 
     const newNote = {
-      id: Date.now().toString(),
+      id: Date.now(), //TODO : usar uuid
       task: noteText,
       state: "todo" as const, // es para decirle a ts que es el valor exacto literal "todo"
       color: colors[colorNumber],

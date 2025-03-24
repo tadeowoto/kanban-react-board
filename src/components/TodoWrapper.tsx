@@ -37,27 +37,33 @@ export const TodoWrapper = ({ title }: Props) => {
         {title === "To Do"
           ? todoNotes.map((note) => (
               <TodoPost
+                id={note.id}
                 key={note.id}
                 task={note.task}
                 desc={note.desc}
                 color={note.color}
+                state={note.state}
               />
             ))
           : title === "In Progress"
           ? inProgressNotes.map((note) => (
               <TodoPost
+                id={note.id}
                 key={note.id}
                 task={note.task}
                 desc={note.desc}
                 color={note.color}
+                state={note.state}
               />
             ))
           : doneNotes.map((note) => (
               <TodoPost
+                id={note.id}
                 key={note.id}
                 task={note.task}
                 desc={note.desc}
                 color={note.color}
+                state={note.state}
               />
             ))}
       </div>

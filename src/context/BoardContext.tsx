@@ -3,7 +3,7 @@ import { createContext, useState, ReactNode } from "react";
 type State = "todo" | "inProgress" | "done";
 
 interface Note {
-  id: string;
+  id: number;
   task: string;
   desc?: string;
   state: State;
@@ -24,6 +24,7 @@ interface BoardContextType {
   setTodoCounter: React.Dispatch<React.SetStateAction<number>>;
   setInProgressCounter: React.Dispatch<React.SetStateAction<number>>;
   setDoneCounter: React.Dispatch<React.SetStateAction<number>>;
+  changeNoteStatus: (id: number, state: State) => void;
 }
 
 //defino a proposito el undefined asi manejo el error en caso de no existor el context
@@ -38,21 +39,21 @@ interface BoardProviderProps {
 export const BoardProvider = ({ children }: BoardProviderProps) => {
   const [notes, setNotes] = useState<Notes>([
     {
-      id: "1",
+      id: 1,
       task: "Example",
       desc: "Description 1",
       state: "todo",
       color: "bg-pastel-pink",
     },
     {
-      id: "2",
+      id: 2,
       task: "Example",
       desc: "Description 2",
       state: "inProgress",
       color: "bg-pastel-blue",
     },
     {
-      id: "3",
+      id: 3,
       task: "Example",
       desc: "Description 3",
       state: "done",
@@ -70,6 +71,10 @@ export const BoardProvider = ({ children }: BoardProviderProps) => {
   );
   const [doneCounter, setDoneCounter] = useState(doneNotes.length);
 
+  const changeNoteStatus = (id: number, state: State) => {
+    console.log(id, state);
+  };
+
   const contextValue: BoardContextType = {
     todoNotes,
     inProgressNotes,
@@ -81,6 +86,7 @@ export const BoardProvider = ({ children }: BoardProviderProps) => {
     setTodoCounter,
     setInProgressCounter,
     setDoneCounter,
+    changeNoteStatus,
   };
 
   return (
