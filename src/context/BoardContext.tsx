@@ -64,9 +64,11 @@ export const BoardProvider = ({ children }: BoardProviderProps) => {
   const inProgressNotes = notes.filter((note) => note.state === "inProgress");
   const doneNotes = notes.filter((note) => note.state === "done");
 
-  const [todoCounter, setTodoCounter] = useState(0);
-  const [inProgressCounter, setInProgressCounter] = useState(0);
-  const [doneCounter, setDoneCounter] = useState(0);
+  const [todoCounter, setTodoCounter] = useState(todoNotes.length);
+  const [inProgressCounter, setInProgressCounter] = useState(
+    inProgressNotes.length
+  );
+  const [doneCounter, setDoneCounter] = useState(doneNotes.length);
 
   const contextValue: BoardContextType = {
     todoNotes,

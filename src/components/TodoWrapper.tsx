@@ -20,7 +20,6 @@ export const TodoWrapper = ({ title }: Props) => {
     inProgressCounter,
     doneCounter,
   } = context;
-  console.log(todoCounter);
 
   return (
     <article className="flex flex-col gap-3 bg-wapper w-full h-fit p-3 font-body font-semibold rounded-lg border border-gray-400">
