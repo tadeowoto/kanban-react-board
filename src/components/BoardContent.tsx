@@ -14,7 +14,7 @@ export const BoardContent = () => {
     throw new Error("TodoWrapper debe usarse dentro de un BoardProvider");
   }
 
-  const { setNotes } = context;
+  const { setNotes, setTodoCounter } = context;
 
   const showForm = () => {
     if (isFormOpen) {
@@ -46,6 +46,7 @@ export const BoardContent = () => {
       state: "todo" as const, // es para decirle a ts que es el valor exacto literal "todo"
       color: colors[colorNumber],
     };
+    setTodoCounter((prevCount) => prevCount + 1);
     setNotes((prevNotes) => [...prevNotes, newNote]);
     setNoteText("");
   };
@@ -83,7 +84,7 @@ export const BoardContent = () => {
           </button>
         </form>
       </div>
-      <div className="flex flex-col items-center justify-center gap-10 p-3">
+      <div className="flex flex-col items-center justify-center gap-10 p-3 md:flex-row">
         <TodoWrapper title="To Do" />
         <TodoWrapper title="In Progress" />
         <TodoWrapper title="Done" />

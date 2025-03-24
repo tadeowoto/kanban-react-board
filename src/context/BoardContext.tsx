@@ -40,21 +40,21 @@ export const BoardProvider = ({ children }: BoardProviderProps) => {
   const [notes, setNotes] = useState<Notes>([
     {
       id: 1,
-      task: "Example",
+      task: "Learn React",
       desc: "Description 1",
       state: "todo",
       color: "bg-pastel-pink",
     },
     {
       id: 2,
-      task: "Example",
+      task: "Drink Mate 🧉",
       desc: "Description 2",
       state: "inProgress",
       color: "bg-pastel-blue",
     },
     {
       id: 3,
-      task: "Example",
+      task: "folow tadeowoto on github",
       desc: "Description 3",
       state: "done",
       color: "bg-pastel-green",
@@ -62,6 +62,7 @@ export const BoardProvider = ({ children }: BoardProviderProps) => {
   ]);
 
   const todoNotes = notes.filter((note) => note.state === "todo");
+
   const inProgressNotes = notes.filter((note) => note.state === "inProgress");
   const doneNotes = notes.filter((note) => note.state === "done");
 
@@ -76,6 +77,20 @@ export const BoardProvider = ({ children }: BoardProviderProps) => {
       (prevNotes) =>
         prevNotes.map((note) => (note.id === id ? { ...note, state } : note)) //si coincide, que copie todo y sobreescriba el estado y si no, que devuelva la nota
     );
+
+    if (state === "todo") {
+      setTodoCounter((prevCount) => prevCount + 1);
+      setInProgressCounter((prevCount) => prevCount - 1);
+      setDoneCounter((prevCount) => prevCount - 1);
+    } else if (state === "inProgress") {
+      setTodoCounter((prevCount) => prevCount - 1);
+      setInProgressCounter((prevCount) => prevCount + 1);
+      setDoneCounter((prevCount) => prevCount - 1);
+    } else if (state === "done") {
+      setTodoCounter((prevCount) => prevCount - 1);
+      setInProgressCounter((prevCount) => prevCount - 1);
+      setDoneCounter((prevCount) => prevCount + 1);
+    } // TODO MEJORAR LA LOGICA
   };
 
   const contextValue: BoardContextType = {
