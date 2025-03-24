@@ -59,7 +59,7 @@ export const BoardContent = () => {
         </h1>
         <button
           onClick={showForm}
-          className="w-full bg-black text-white p-3 rounded-xl"
+          className="w-full bg-black text-white p-3 rounded-xl md:w-1/3"
         >
           Add new Note
         </button>
@@ -84,7 +84,7 @@ export const BoardContent = () => {
           </button>
         </form>
       </div>
-      <div className="flex flex-col items-center justify-center gap-10 p-3 md:flex-row">
+      <div className="flex flex-col items-center justify-center gap-10 p-3 md:flex-row md:p-10">
         <TodoWrapper title="To Do" />
         <TodoWrapper title="In Progress" />
         <TodoWrapper title="Done" />
