@@ -72,7 +72,10 @@ export const BoardProvider = ({ children }: BoardProviderProps) => {
   const [doneCounter, setDoneCounter] = useState(doneNotes.length);
 
   const changeNoteStatus = (id: number, state: State) => {
-    console.log(id, state);
+    setNotes(
+      (prevNotes) =>
+        prevNotes.map((note) => (note.id === id ? { ...note, state } : note)) //si coincide, que copie todo y sobreescriba el estado y si no, que devuelva la nota
+    );
   };
 
   const contextValue: BoardContextType = {
