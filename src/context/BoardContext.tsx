@@ -73,24 +73,27 @@ export const BoardProvider = ({ children }: BoardProviderProps) => {
   const [doneCounter, setDoneCounter] = useState(doneNotes.length);
 
   const changeNoteStatus = (id: number, state: State) => {
-    setNotes(
-      (prevNotes) =>
-        prevNotes.map((note) => (note.id === id ? { ...note, state } : note)) //si coincide, que copie todo y sobreescriba el estado y si no, que devuelva la nota
+    const oldState = notes.find((note) => note.id === id)?.state;
+    console.log(oldState);
+    if (!oldState || oldState === state) return;
+
+    setNotes((prevNotes) =>
+      prevNotes.map((note) => (note.id === id ? { ...note, state } : note))
     );
 
-    if (state === "todo") {
-      setTodoCounter((prevCount) => prevCount + 1);
-      setInProgressCounter((prevCount) => prevCount - 1);
-      setDoneCounter((prevCount) => prevCount - 1);
-    } else if (state === "inProgress") {
-      setTodoCounter((prevCount) => prevCount - 1);
-      setInProgressCounter((prevCount) => prevCount + 1);
-      setDoneCounter((prevCount) => prevCount - 1);
-    } else if (state === "done") {
-      setTodoCounter((prevCount) => prevCount - 1);
-      setInProgressCounter((prevCount) => prevCount - 1);
-      setDoneCounter((prevCount) => prevCount + 1);
-    } // TODO MEJORAR LA LOGICA
+    // mapeo de los contadores dependiendo el estado anterior y el nuevo estado
+    const contadores = {
+      todo: setTodoCounter,
+      inProgress: setInProgressCounter,
+      done: setDoneCounter,
+    };
+    console.log(contadores);
+
+    // Decrementar el contador del estado anterior
+    // Esto es el equivalente a poner setTodoCounter((prev) => prev - 1) en el caso de que el estado anterior sea "todo"
+    contadores[oldState]((prev) => prev - 1);
+    // Incrementar el contador del nuevo estado
+    contadores[state]((prev) => prev + 1);
   };
 
   const contextValue: BoardContextType = {
