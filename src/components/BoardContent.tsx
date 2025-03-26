@@ -26,6 +26,10 @@ export const BoardContent = () => {
   const handleForm = (e: React.FormEvent) => {
     e.preventDefault();
     setIsFormOpen(false);
+    if (noteText.trim() === "") {
+      alert("Please write something");
+      return;
+    }
     const colorNumber = Math.floor(Math.random() * 9);
     const colors = [
       "bg-pastel-pink",
