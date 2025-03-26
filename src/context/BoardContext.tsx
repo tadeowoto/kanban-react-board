@@ -1,9 +1,10 @@
 import { createContext, useState, ReactNode } from "react";
+import { v4 as uuid } from "uuid";
 
 type State = "todo" | "inProgress" | "done";
 
 interface Note {
-  id: number;
+  id: string;
   task: string;
   desc?: string;
   state: State;
@@ -24,7 +25,7 @@ interface BoardContextType {
   setTodoCounter: React.Dispatch<React.SetStateAction<number>>;
   setInProgressCounter: React.Dispatch<React.SetStateAction<number>>;
   setDoneCounter: React.Dispatch<React.SetStateAction<number>>;
-  changeNoteStatus: (id: number, state: State) => void;
+  changeNoteStatus: (id: string, state: State) => void;
 }
 
 //defino a proposito el undefined asi manejo el error en caso de no existor el context
@@ -39,21 +40,21 @@ interface BoardProviderProps {
 export const BoardProvider = ({ children }: BoardProviderProps) => {
   const [notes, setNotes] = useState<Notes>([
     {
-      id: 1,
+      id: uuid(),
       task: "Learn React",
       desc: "Description 1",
       state: "todo",
       color: "bg-pastel-pink",
     },
     {
-      id: 2,
+      id: uuid(),
       task: "Drink Mate 🧉",
       desc: "Description 2",
       state: "inProgress",
       color: "bg-pastel-blue",
     },
     {
-      id: 3,
+      id: uuid(),
       task: "folow tadeowoto on github",
       desc: "Description 3",
       state: "done",
@@ -72,9 +73,8 @@ export const BoardProvider = ({ children }: BoardProviderProps) => {
   );
   const [doneCounter, setDoneCounter] = useState(doneNotes.length);
 
-  const changeNoteStatus = (id: number, state: State) => {
+  const changeNoteStatus = (id: string, state: State) => {
     const oldState = notes.find((note) => note.id === id)?.state;
-    console.log(oldState);
     if (!oldState || oldState === state) return;
 
     setNotes((prevNotes) =>
@@ -87,7 +87,6 @@ export const BoardProvider = ({ children }: BoardProviderProps) => {
       inProgress: setInProgressCounter,
       done: setDoneCounter,
     };
-    console.log(contadores);
 
     // Decrementar el contador del estado anterior
     // Esto es el equivalente a poner setTodoCounter((prev) => prev - 1) en el caso de que el estado anterior sea "todo"

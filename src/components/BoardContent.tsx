@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-
+import { v4 as uuid } from "uuid";
 import { TodoWrapper } from "./TodoWrapper";
 import { BoardContext } from "../context/BoardContext";
 
@@ -45,7 +45,7 @@ export const BoardContent = () => {
     ];
 
     const newNote = {
-      id: Date.now(), //TODO : usar uuid
+      id: uuid(), //TODO : usar uuid
       task: noteText,
       state: "todo" as const, // es para decirle a ts que es el valor exacto literal "todo"
       color: colors[colorNumber],
